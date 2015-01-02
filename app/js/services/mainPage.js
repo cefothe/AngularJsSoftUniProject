@@ -1,10 +1,10 @@
 softUni.factory('mainData',function ($http, $log){
 
 	return{
-		getAllAds:function(success){
+		getAllAds:function(startPage,townId,categoryId,success){
 			$http({
 				method:'GET',
-				url:'http://softuni-ads.azurewebsites.net/api/ads?PageSize=10&sStartpage=1'
+				url:'http://softuni-ads.azurewebsites.net/api/ads?startPage='+startPage+'&townId='+townId+'&categoryId='+categoryId
 			}).success(function(data,status,headers,config){
 				success(data);
 			}).error(function(data,status,headers,config){

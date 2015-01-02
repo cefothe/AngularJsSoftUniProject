@@ -31,13 +31,22 @@
 									
 										<strong>Name :</strong>{{ad.ownerName}} </br>
 										<strong>Email : </strong>{{ad.ownerEmail}}</br>
-										<strong>Tel : </br>{{ad.ownerPhone}}</strong>
+										<strong>Tel : </strong>{{ad.ownerPhone}}</br>
 									
 									
 								</div>					
 							</div>
 						</div>
 					</div>
+				</li>
+				<li>
+					<ul class="pagination">
+		                <li><a href="" ng-click="previousPage()">«</a></li>
+		                <li ng-repeat="page in pagePagination" >
+		                <a ng-click="changePage(page.pageNumber)">{{page.pageNumber}}</a></li>
+		                <li><a href="" ng-click="nextPage()">»</a></li>
+              		</ul>
+
 				</li>
 			</ul>
 		</div>
@@ -46,8 +55,11 @@
 			  <div class="panel-heading">
 			    <h3 class="panel-title">Category</h3>
 			  </div>
+			  <div class="panel-body">
+			    	<a href="" ng-click="filterCategory('')">All Category</a>
+			  </div>
 			  <div class="panel-body" ng-repeat="category in categorys">
-			    	{{category.name}}
+			    	<a href="" ng-click="filterCategory(category.id)">{{category.name}}</a>
 			  </div>
 			</div>
 
@@ -55,8 +67,11 @@
 			  <div class="panel-heading">
 			    <h3 class="panel-title">Towns</h3>
 			  </div>
+			  <div class="panel-body">
+			    	<a href="" ng-click="filterTown('')">All tows</a>
+			  </div>
 			  <div class="panel-body" ng-repeat="town in towns">
-			    	{{town.name}}
+			    	<a href="" ng-click="filterTown(town.id)">{{town.name}}</a>
 			  </div>
 			</div>
 		</div>
