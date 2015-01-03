@@ -1,49 +1,56 @@
 <div class="well bs-component">
               <form class="form-horizontal">
+               <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
                 <fieldset>
                   <legend>Register form</legend>
                   <div class="form-group">
                     <label class="col-lg-2 control-label" for="inputEmail">Email</label>
                     <div class="col-lg-10">
-                      <input type="text" placeholder="Email" id="inputEmail" class="form-control">
+                      <input type="text" placeholder="Email" ng-model="user.email" id="inputEmail" class="form-control">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-lg-2 control-label" for="inputPassword">Password</label>
                     <div class="col-lg-10">
-                      <input type="password" placeholder="Password" id="inputPassword" class="form-control">
+                      <input type="password" placeholder="Password" ng-model="user.password" id="inputPassword" class="form-control">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-lg-2 control-label" for="inputPassword_repeat">Password repeat</label>
                     <div class="col-lg-10">
-                      <input type="password" placeholder="Password repeat" id="inputPassword_repeat" class="form-control">
+                      <input type="password" placeholder="Password repeat" ng-model="user.confirmPassword" id="inputPassword_repeat" class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-lg-2 control-label" for="inputName">Name:</label>
+                    <div class="col-lg-10">
+                      <input type="text" placeholder="Name" id="inputName" ng-model="user.name" class="form-control">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-lg-2 control-label" for="inputUsername">Username:</label>
                     <div class="col-lg-10">
-                      <input type="text" placeholder="Username" id="inputUsername" class="form-control">
+                      <input type="text" placeholder="Username" id="inputUsername" ng-model="user.username" class="form-control">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-lg-2 control-label" for="inputPhone">Phone:</label>
                     <div class="col-lg-10">
-                      <input type="text" placeholder="Phone" id="inputPhone" class="form-control">
+                      <input type="text" placeholder="Phone" ng-model="user.phone" id="inputPhone" class="form-control">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-lg-2 control-label" for="select">Town:</label>
                     <div class="col-lg-10">
-                      <select id="inputTown" class="form-control" >
-                        <option ng-repeat="town in towns" value="town.id">{{town.name}}</option>
+                      <select id="inputTown" class="form-control" ng-model="user.townId" >
+                        <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
                       </select>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
                       <button class="btn btn-default">Cancel</button>
-                      <button class="btn btn-primary" type="submit">Submit</button>
+                      <button class="btn btn-primary" ng-click="createUser(user)">Submit</button>
                     </div>
                   </div>
                 </fieldset>
