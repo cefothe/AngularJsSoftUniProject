@@ -1,5 +1,5 @@
-softUni.controller('UserAdsControllerDelete', ['$scope', 'userService', '$routeParams','mainData','$log',
-    function ($scope, userService, $routeParams, mainData,$log) {
+softUni.controller('UserAdsControllerDelete', ['$scope','$location' ,'userService', '$routeParams','mainData','$log',
+    function ($scope,$location, userService, $routeParams, mainData,$log) {
 
     	$scope.adData={};
 		userService.getUserAd($routeParams.id,function(resp){
@@ -17,5 +17,18 @@ softUni.controller('UserAdsControllerDelete', ['$scope', 'userService', '$routeP
 
 			$log.warn($scope.adData);
 		});
+
+		$scope.deleteAds=function(){
+			userService.deleteUserAd($routeParams.id,
+				function success() {
+					$location.path("/user/ads");
+					},
+					function error(err) {
+
+					}
+				)
+
+		}
+
 
     }]);
