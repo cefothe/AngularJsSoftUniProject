@@ -53,6 +53,11 @@ softUni.controller('UserAdsController',function ($scope, userService,$log){
     	$scope.loadPage();
     }
     $scope.loadPage();
-   
+ 
+ 	$scope.checkStatus=function(){
+ 		if($scope.main.status=='')
+ 			return true;
+ 		else return false;
+ 	}  
 	
 });

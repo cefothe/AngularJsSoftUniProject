@@ -34,8 +34,20 @@
 										<strong>Tel : </strong>{{ad.ownerPhone}}</br>
 									
 									
-								</div>					
+								</div>
 							</div>
+						</div>
+						<div class="row" ng-if="checkStatus()">
+								<strong>Status:</strong> {{ad.status}}<br>
+								<strong><a href="">Deactivate</a></strong>
+
+						</div>
+						<div class="row" ng-if="!checkStatus()">
+								<strong>Status:</strong> {{ad.status}}<br>
+								<strong><a href="">Edit</a></strong><br>
+								<strong><a href="#/user/ads/delete/{{ad.id}}">Delete</a></strong>
+
+
 						</div>
 					</div>
 				</li>

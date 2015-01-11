@@ -22,11 +22,31 @@ softUni.factory('userService',
             },
 
             deactivateAd: function (id, success, error) {
-                // TODO
+
             },
 
             publishAgainAd: function (id, success, error) {
                 // TODO
+            },
+
+            getUserAd:function (id, success,error){
+                var request={
+                    method: 'GET',
+                    url:  'http://softuni-ads.azurewebsites.net/api/user/ads/'+id,
+                    headers: authorization.getAuthorizationHeaders()
+                };
+                $http(request).success(success).error(error);
+            },
+
+            deleteUserAd: function(id,success,error){
+                var request={
+                    method: 'DELETE',
+                    url:  'http://softuni-ads.azurewebsites.net/api/user/ads/'+id,
+                    headers: authorization.getAuthorizationHeaders()
+                };
+                $http(request).success(success).error(error);
+
+                
             }
         }
     }

@@ -23,7 +23,6 @@ softUni.controller('UserPublishNewAdController',
 
 $scope.fileSelected = function(fileInputField) {
     delete $scope.adData.imageDataUrl;
-    $log.warn('hey');
     var file = fileInputField.files[0];
     if (file.type.match(/image\/.*/)) {
         var reader = new FileReader();
