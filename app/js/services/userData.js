@@ -26,6 +26,22 @@ softUni.factory('userData',['$http', 'authorization', '$q'
                 });
 
             return d.promise;
-		}
+		},
+		logOut: function logout() {
+            var d = $q.defer(),
+                headers = authorization.getAuthorizationHeaders();
+            $http.post(userServiceUrl + '/logout', {}, {headers: headers})
+                .success(function (userLogoutData) {
+                    authorization.setLocalUser(undefined);
+                    authorization.removeAuthorizationHeaders();
+                    d.resolve(userLogoutData);
+                })
+                .error(function (logoutErr) {
+                    d.reject(logoutErr);
+                });
+
+            return d.promise;
+        }
+
 	}
 }]);

@@ -1,5 +1,7 @@
-softUni.controller('SoftUniController',function ($scope, mainData,$log){
+softUni.controller('SoftUniController',function (authorization,$scope, mainData,$log){
 	
+	$scope.authorization=authorization;
+
 	$scope.main={
 		page: 1,
 		pages:0,

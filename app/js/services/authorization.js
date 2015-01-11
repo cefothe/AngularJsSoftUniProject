@@ -1,6 +1,5 @@
 softUni.factory('authorization', ['$q', function ($q) {
     var headers = {};
-
     function getLocalUser() {
         var savedUser = JSON.parse(sessionStorage.getItem('userData'));
         if (savedUser) {
@@ -9,6 +8,7 @@ softUni.factory('authorization', ['$q', function ($q) {
             return false;
         }
     }
+
 
     function setLocalUser(user) {
         if (!!user) {
@@ -20,7 +20,7 @@ softUni.factory('authorization', ['$q', function ($q) {
     }
 
     function isLogged() {
-        return !!this.getLocalUser();
+        return this.getLocalUser();
     }
 
     function isUser() {

@@ -1,4 +1,4 @@
-softUni.controller('UserController',function ($scope,$log,userData, authorization,$location){
+softUni.controller('UserController',function ('$q',$scope,$log,userData, authorization,$location){
 
 	$scope.alerts = [];
 
@@ -25,6 +25,7 @@ softUni.controller('UserController',function ($scope,$log,userData, authorizatio
 			)
 	}
 
+	
 	$scope.addAlert = function(TextMsg,typeMsg) {
     	$scope.alerts[0]=({msg:TextMsg,type: typeMsg});
   	};
