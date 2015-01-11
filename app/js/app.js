@@ -39,6 +39,11 @@ var softUni= angular.module('softUniModule',['ngRoute','ngResource','ui.bootstra
         controller: 'UserAdsControllerDelete',
         resolve: routePermissions.isUser
     });
+    $routeProvider.when('/user/ads/delete/:id',{
+        templateUrl: 'templates/ads-delete.html',
+        controller: 'UserAdsControllerDelete',
+        resolve: routePermissions.isUser
+    });
     
 	$routeProvider.otherwise({redirectTo:'/ads'});
 	
