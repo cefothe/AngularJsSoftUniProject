@@ -9,7 +9,6 @@ softUni.factory('authorization', ['$q', function ($q) {
         }
     }
 
-
     function setLocalUser(user) {
         if (!!user) {
             var userStr = JSON.stringify(user);
@@ -20,7 +19,7 @@ softUni.factory('authorization', ['$q', function ($q) {
     }
 
     function isLogged() {
-        return this.getLocalUser();
+        return !!this.getLocalUser();
     }
 
     function isUser() {
@@ -36,18 +35,6 @@ softUni.factory('authorization', ['$q', function ($q) {
         }
     }
 
-    function isAdmin() {
-        if (this.isLogged()) {
-            var loggedUser = this.getLocalUser();
-            console.dir(loggedUser);
-            console.dir(loggedUser.isAdmin);
-            if (loggedUser.isAdmin === 'true') {
-                return true
-            }
-        }
-
-        return $q.reject('not authorized');
-    }
 
     function setAuthorizationHeaders(accessToken) {
         angular.extend(headers, {Authorization: 'Bearer ' + accessToken});
@@ -71,7 +58,6 @@ softUni.factory('authorization', ['$q', function ($q) {
         setLocalUser: setLocalUser,
         isLogged: isLogged,
         isUser: isUser,
-        isAdmin: isAdmin,
         getAuthorizationHeaders: getAuthorizationHeaders,
         removeAuthorizationHeaders: removeAuthorizationHeaders
     }

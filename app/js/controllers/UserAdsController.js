@@ -1,23 +1,14 @@
-softUni.controller('SoftUniController',function ($scope, mainData,$log){
+softUni.controller('UserAdsController',function ($scope, userService,$log){
 	
 
 	$scope.main={
-		page: 1,
+		startpage: 1,
 		pages:0,
-		categoryId:'',
-		townId:''
+		status:''
 	}
 
-	mainData.getAllTown(function(resp){
-		$scope.towns=resp;
-	});
-
-	mainData.getAllCategory(function(resp){
-		$scope.categorys=resp;
-	});
-
 	$scope.loadPage=function(){
-		mainData.getAllAds($scope.main.page, $scope.main.townId,$scope.main.categoryId,function(resp){
+		userService.getUserAds($scope.main,function(resp){
 			$scope.data=resp;
 			$scope.main.pages=resp.numPages;
 			$scope.loadPagination();
@@ -57,13 +48,8 @@ softUni.controller('SoftUniController',function ($scope, mainData,$log){
 
     }
 
-    $scope.filterTown=function(townId){
-    	$scope.main.townId=townId;
-    	$scope.loadPage();
-    }
-
-  $scope.filterCategory=function(categoryId){
-    	$scope.main.categoryId=categoryId;
+  $scope.filter=function(categoryId){
+    	$scope.main.status=categoryId;
     	$scope.loadPage();
     }
     $scope.loadPage();

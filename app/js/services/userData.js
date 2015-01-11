@@ -27,10 +27,11 @@ softUni.factory('userData',['$http', 'authorization', '$q'
 
             return d.promise;
 		},
-		logOut: function logout() {
+
+		logOut: function () {
             var d = $q.defer(),
                 headers = authorization.getAuthorizationHeaders();
-            $http.post(userServiceUrl + '/logout', {}, {headers: headers})
+            $http.post('http://softuni-ads.azurewebsites.net/api/user/logout', {}, {headers: headers})
                 .success(function (userLogoutData) {
                     authorization.setLocalUser(undefined);
                     authorization.removeAuthorizationHeaders();

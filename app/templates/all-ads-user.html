@@ -1,0 +1,77 @@
+<div class="jumbotron">
+	<div class="row">
+		<div class="col-md-9">
+			Ads
+			<ul id='ul'>
+				<li ng-repeat="ad in data.ads">
+					<div class="container well">
+						<div class="row">
+							<div class="col-md-7">
+								<h3 class="pull-left">
+									{{ad.title}}
+								</h3>
+							</div>
+							<div class="col-md-5">
+								<span class="pull-right">
+									{{ad.date | date:'dd-MMM-yyyy'}}
+								</span>
+							</div>
+						</div>
+						<div class ="row">
+							<div class="col-md-4">
+								
+									<img src="" ng-src="{{ad.imageDataUrl || './image/no-image.png'}}" class="_fullHD">
+								
+							</div>
+							<div class="col-md-8">
+								<div >
+									{{ad.text}}
+								</div>
+								<div class="row">
+									
+										<strong>Name :</strong>{{ad.ownerName}} </br>
+										<strong>Email : </strong>{{ad.ownerEmail}}</br>
+										<strong>Tel : </strong>{{ad.ownerPhone}}</br>
+									
+									
+								</div>					
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<ul class="pagination">
+		                <li><a href="" ng-click="previousPage()">«</a></li>
+		                <li ng-repeat="page in pagePagination" >
+		                <a ng-click="changePage(page.pageNumber)">{{page.pageNumber}}</a></li>
+		                <li><a href="" ng-click="nextPage()">»</a></li>
+              		</ul>
+
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-3"> 
+			<div class="panel panel-primary">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">Category</h3>
+			  </div>
+			  <div class="panel-body">
+			    	<a href="" ng-click="filter('')">All Category</a>
+			  </div>
+			  <div class="panel-body">
+			    	<a href="" ng-click="filter(0)">Inactive</a>
+			  </div>
+			  <div class="panel-body">
+			    	<a href="" ng-click="filter(1)">WaitingApproval</a>
+			  </div>
+			  <div class="panel-body">
+			    	<a href="" ng-click="filter(2)">Published</a>
+			  </div>
+			  <div class="panel-body">
+			    	<a href="" ng-click="filter(3)">Rejected</a>
+			  </div>
+			</div>
+
+		</div>
+	</div>
+</div>

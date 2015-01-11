@@ -1,4 +1,4 @@
-softUni.controller('UserController',function ('$q',$scope,$log,userData, authorization,$location){
+softUni.controller('UserController',function ($q,$scope,$log,userData, authorization,$location){
 
 	$scope.alerts = [];
 

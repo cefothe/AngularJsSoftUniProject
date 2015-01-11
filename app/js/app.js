@@ -17,7 +17,8 @@ var softUni= angular.module('softUniModule',['ngRoute','ui.bootstrap'])
 		controller:'UserController'
 	})
 	$routeProvider.when('/ads',{
-		templateUrl:'templates/all-ads.html'
+		templateUrl:'templates/all-ads.html',
+		controller:'SoftUniController'
 	});
 	$routeProvider.when('/login',{
 		templateUrl:'templates/login.html',
@@ -26,6 +27,11 @@ var softUni= angular.module('softUniModule',['ngRoute','ui.bootstrap'])
 	$routeProvider.when('/user/ads/publish', {
         templateUrl: 'templates/ad-publish-form.html',
         controller: 'UserPublishNewAdController',
+        resolve: routePermissions.isUser
+    });
+    $routeProvider.when('/user/ads', {
+        templateUrl: 'templates/all-ads-user.html',
+        controller: 'UserAdsController',
         resolve: routePermissions.isUser
     });
 	$routeProvider.otherwise({redirectTo:'/ads'});

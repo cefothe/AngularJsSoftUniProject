@@ -6,28 +6,32 @@
     <div class="form-group">
       <label for="inputEmail" class="col-lg-2 control-label">Title:</label>
       <div class="col-lg-10">
-        <input class="form-control" id="inputEmail" placeholder="Email" type="text">
+        <input class="form-control" id="title" ng-model="adData.title" required  placeholder="Title" type="text">
       </div>
     </div>
     <div class="form-group">
       <label for="textArea" class="col-lg-2 control-label">Text:</label>
       <div class="col-lg-10">
-        <textarea class="form-control" rows="3" id="textArea"></textarea>
+        <textarea class="form-control"  ng-model="adData.text" required rows="3" id="textArea"></textarea>
         <span class="help-block"></span>
       </div>
     </div>
     <div class="form-group">
       <label for="select" class="col-lg-2 control-label">Image:</label>
-      <div class="col-lg-10">
-        <input type="file">
-        <br>
-      </div>
+      <p>
+  <input type="file" id="image"
+         ng-change="angular.element(this).scope().fileSelected(this)" />
+  <div class="image-box">
+      <p>Image Preview</p>
+  </div>
+</p>
+
     </div>
     <div class="form-group">
       <label for="select" class="col-lg-2 control-label">Category:</label>
       <div class="col-lg-10">
-        <select class="form-control" id="select">
-          <option ng-repeat="categor in categories" value="{{categor.id}}">{{categor.name}}</option>
+        <select class="form-control" id="category" ng-model="adData.categoryId">
+          <option ng-repeat="categor in categorys" value="{{categor.id}}">{{categor.name}}</option>
         </select>
         <br>
       </div>
@@ -35,7 +39,7 @@
      <div class="form-group">
       <label for="select" class="col-lg-2 control-label">Town:</label>
       <div class="col-lg-10">
-        <select class="form-control" id="select">
+        <select class="form-control" id="category" ng-model="adData.townId">
           <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
         </select>
         <br>
@@ -44,7 +48,7 @@
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
         <button class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" ng-click="publishAd(adData)" class="btn btn-primary">Public</button>
       </div>
     </div>
   </fieldset>
